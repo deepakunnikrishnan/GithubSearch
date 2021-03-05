@@ -47,7 +47,7 @@ public class SearchOrganizationRepositoriesUseCase {
                 .subscribe(searchResult -> {
                     Result<SearchResult, ApiError> result = new Result<>(searchResult, null);
                     resultLiveData.postValue(result);
-                });
+                }, throwable -> {});
         compositeDisposable.add(disposable);
     }
 

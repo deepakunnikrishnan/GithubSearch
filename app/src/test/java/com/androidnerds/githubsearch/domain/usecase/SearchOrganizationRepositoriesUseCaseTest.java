@@ -22,7 +22,6 @@ public class SearchOrganizationRepositoriesUseCaseTest {
 
     @Rule
     public final InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
-
     @Mock
     private IGithubRepository githubRepository;
     private SchedulerProvider schedulerProvider;

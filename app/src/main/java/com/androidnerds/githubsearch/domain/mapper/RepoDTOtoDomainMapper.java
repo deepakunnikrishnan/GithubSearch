@@ -21,6 +21,7 @@ public class RepoDTOtoDomainMapper implements Mapper<RepoDTO, Repo> {
         repo.setFullName(input.getFullName());
         repo.setDescription(input.getDescription());
         repo.setUrl(input.getUrl());
+        repo.setStarCount(input.getStarCount());
         return repo;
     }
 }

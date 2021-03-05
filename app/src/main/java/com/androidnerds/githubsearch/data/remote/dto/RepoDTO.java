@@ -10,6 +10,8 @@ public class RepoDTO {
     private String fullName;
     private String description;
     private String url;
+    @SerializedName("stargazers_count")
+    private int starCount;
 
     public long getId() {
         return id;
@@ -49,5 +51,13 @@ public class RepoDTO {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public int getStarCount() {
+        return starCount;
+    }
+
+    public void setStarCount(int starCount) {
+        this.starCount = starCount;
     }
 }
