@@ -1,4 +1,4 @@
-package com.androidnerds.githubsearch.presentation;
+package com.androidnerds.githubsearch.presentation.search;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;

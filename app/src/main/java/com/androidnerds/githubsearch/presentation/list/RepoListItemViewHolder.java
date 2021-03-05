@@ -9,9 +9,11 @@ import com.androidnerds.githubsearch.domain.model.Repo;
 public class RepoListItemViewHolder extends RecyclerView.ViewHolder {
 
     private final ListItemRepositoryBinding binding;
-    public RepoListItemViewHolder(@NonNull ListItemRepositoryBinding binding) {
+
+    public RepoListItemViewHolder(@NonNull ListItemRepositoryBinding binding, RepoListAdapter.OnRepoListItemClickListener listItemClickListener) {
         super(binding.getRoot());
         this.binding = binding;
+        this.binding.getRoot().setOnClickListener(v -> listItemClickListener.onListItemClicked(binding.getRepo()));
     }
 
     public void bind(Repo repo) {

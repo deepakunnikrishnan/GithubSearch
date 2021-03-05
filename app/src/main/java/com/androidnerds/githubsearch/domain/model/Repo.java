@@ -1,6 +1,8 @@
 package com.androidnerds.githubsearch.domain.model;
 
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Objects;
 
 public class Repo {

@@ -9,6 +9,7 @@ public class RepoDTO {
     @SerializedName("full_name")
     private String fullName;
     private String description;
+    @SerializedName("html_url")
     private String url;
     @SerializedName("stargazers_count")
     private int starCount;

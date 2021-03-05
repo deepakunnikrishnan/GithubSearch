@@ -2,7 +2,7 @@ package com.androidnerds.githubsearch.di;
 
 import android.content.Context;
 
-import com.androidnerds.githubsearch.presentation.MainActivity;
+import com.androidnerds.githubsearch.presentation.search.MainActivity;
 
 import dagger.Component;
 

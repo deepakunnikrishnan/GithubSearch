@@ -14,6 +14,11 @@ import com.androidnerds.githubsearch.domain.model.Repo;
 
 public class RepoListAdapter extends ListAdapter<Repo, RepoListItemViewHolder> {
 
+    public interface OnRepoListItemClickListener {
+        void onListItemClicked(Repo repo);
+    }
+
+
     private static final DiffUtil.ItemCallback<Repo> itemCallback = new DiffUtil.ItemCallback<Repo>() {
         @Override
         public boolean areItemsTheSame(@NonNull Repo oldItem, @NonNull Repo newItem) {
@@ -26,15 +31,18 @@ public class RepoListAdapter extends ListAdapter<Repo, RepoListItemViewHolder> {
         }
     };
 
-    public RepoListAdapter() {
+    private final OnRepoListItemClickListener listItemClickListener;
+
+    public RepoListAdapter(OnRepoListItemClickListener listItemClickListener) {
         super(itemCallback);
+        this.listItemClickListener = listItemClickListener;
     }
 
     @NonNull
     @Override
     public RepoListItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ListItemRepositoryBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.list_item_repository, parent, false);
-        return new RepoListItemViewHolder(binding);
+        return new RepoListItemViewHolder(binding, listItemClickListener);
     }
 
     @Override
