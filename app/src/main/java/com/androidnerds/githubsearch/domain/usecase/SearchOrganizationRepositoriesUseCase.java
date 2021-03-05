@@ -4,10 +4,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.androidnerds.githubsearch.core.Result;
-import com.androidnerds.githubsearch.core.annotation.ErrorType;
 import com.androidnerds.githubsearch.core.remote.NetworkException;
 import com.androidnerds.githubsearch.core.rx.SchedulerProvider;
-import com.androidnerds.githubsearch.data.remote.dto.ApiError;
 import com.androidnerds.githubsearch.data.remote.dto.ApiErrorResponse;
 import com.androidnerds.githubsearch.domain.IGithubRepository;
 import com.androidnerds.githubsearch.domain.model.AppError;
@@ -17,7 +15,6 @@ import javax.inject.Inject;
 
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.functions.Consumer;
 
 public class SearchOrganizationRepositoriesUseCase {
 
@@ -36,9 +33,9 @@ public class SearchOrganizationRepositoriesUseCase {
     public void execute(String organizationName, int limit) {
         Disposable disposable = githubRepository.getTopRepositories(organizationName, limit)
                 .doOnError(throwable -> {
-                    if(throwable instanceof NetworkException) {
+                    if (throwable instanceof NetworkException) {
                         NetworkException exception = (NetworkException) throwable;
-                        if(exception.getError() instanceof ApiErrorResponse) {
+                        if (exception.getError() instanceof ApiErrorResponse) {
                             ApiErrorResponse apiErrorResponse = (ApiErrorResponse) exception.getError();
                             Result<SearchResult, AppError> result = new Result<>(null, new AppError(AppError.ErrorType.API_ERROR, apiErrorResponse.getErrors().get(0).getMessage()));
                             resultLiveData.postValue(result);
@@ -55,7 +52,8 @@ public class SearchOrganizationRepositoriesUseCase {
                 .subscribe(searchResult -> {
                     Result<SearchResult, AppError> result = new Result<>(searchResult, null);
                     resultLiveData.postValue(result);
-                }, throwable -> {});
+                }, throwable -> {
+                });
         compositeDisposable.add(disposable);
     }
 
