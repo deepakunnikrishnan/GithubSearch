@@ -27,5 +27,6 @@ public class SearchResponseToDomainMapperTest {
         assertNotNull(searchResult);
         assertEquals(3, searchResult.getRepoList().size());
         assertEquals(76, searchResult.getTotalCount());
+        String result = new Gson().toJson(searchResult);
     }
 }

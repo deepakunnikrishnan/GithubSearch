@@ -4,8 +4,8 @@ import androidx.annotation.Nullable;
 
 public class NetworkException extends RuntimeException {
 
-    private Throwable throwable;
-    private Object error;
+    private final Throwable throwable;
+    private final Object error;
 
     public NetworkException(Throwable throwable, Object error) {
         super(throwable);
