@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import java.security.cert.CertificateException;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Singleton;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
@@ -82,6 +83,7 @@ public class RemoteModule {
 
 
     @Provides
+    @Singleton
     public static OkHttpClient provideOkHttpClient(HttpLoggingInterceptor loggingInterceptor) {
         if(null == okHttpClient) {
             okHttpClient = getUnsafeOkHttpClient(loggingInterceptor);
@@ -92,6 +94,7 @@ public class RemoteModule {
 
 
     @Provides
+    @Singleton
     public static Retrofit provideRetrofit(ApiConfig apiConfig, OkHttpClient okHttpClient, GsonConverterFactory gsonConverterFactory, CallAdapter.Factory adapterFactory) {
         if(null == retrofit) {
             retrofit  = new Retrofit.Builder()
@@ -115,26 +118,31 @@ public class RemoteModule {
     }
 
     @Provides
+    @Singleton
     public static GsonConverterFactory provideGsonConverterFactory(Gson gson) {
         return GsonConverterFactory.create(gson);
     }
 
     @Provides
+    @Singleton
     public static CallAdapter.Factory provideCallAdapterFactory(RxJava3CallAdapterFactory rxJava3CallAdapterFactory) {
         return new RxCallAdapterFactoryWrapper(rxJava3CallAdapterFactory);
     }
 
     @Provides
+    @Singleton
     public static RxJava3CallAdapterFactory provideRxJava3CallAdapterFactory() {
         return RxJava3CallAdapterFactory.create();
     }
 
     @Provides
+    @Singleton
     public static Gson provideGson() {
         return new Gson();
     }
 
     @Provides
+    @Singleton
     public static GithubApiService provideGithubService(Retrofit retrofit) {
         return retrofit.create(GithubApiService.class);
     }

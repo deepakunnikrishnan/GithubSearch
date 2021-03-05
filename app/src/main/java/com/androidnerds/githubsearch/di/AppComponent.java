@@ -4,8 +4,11 @@ import android.content.Context;
 
 import com.androidnerds.githubsearch.presentation.search.MainActivity;
 
+import javax.inject.Singleton;
+
 import dagger.Component;
 
+@Singleton
 @Component(modules = {
         AppModule.class
 })

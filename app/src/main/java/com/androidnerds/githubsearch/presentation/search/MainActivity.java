@@ -19,7 +19,6 @@ import com.androidnerds.githubsearch.domain.model.Repo;
 import com.androidnerds.githubsearch.presentation.list.RepoListAdapter;
 import com.jakewharton.rxbinding4.widget.RxTextView;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
