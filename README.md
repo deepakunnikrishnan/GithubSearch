@@ -12,9 +12,7 @@ A sample application that provides the users with the option to search the top r
 4. User can tap on a repo in the result list. On tapping, the user will be navigated to the github page for the repo.
 
 ### Search by restricted or invalid organization name
-1. The user has the option to enter the name of the organization.
-2. On typing the organization name, the app searches for the top repositories.
-3. If the server returns an error, the error message would be displayed in the screen.
+If the user enters an invalid or restricted name, then the server returns an error. The error message would be displayed to the user.
 
 ### API Usage:
 
