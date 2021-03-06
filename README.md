@@ -16,6 +16,11 @@ A sample application that provides the users with the option to search the top r
 2. On typing the organization name, the app searches for the top repositories.
 3. If the server returns an error, the error message would be displayed in the screen.
 
+### API Usage:
+
+#### Github's Search API 
+https://api.github.com/search/repositories?q=org:<organizationName>&sort=stars&order=desc&per_page=3
+
 ## App Architecture
 1. Presentation layer - Android Architecture components - MVVM pattern
 2. Domain layer - UseCases based implementation - Exposes a LiveData with the result for the usecase execution
