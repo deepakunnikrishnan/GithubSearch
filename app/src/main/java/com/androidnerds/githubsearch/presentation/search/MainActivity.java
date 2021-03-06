@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     if(listApiErrorResult.getData() != null) {
                         adapter.submitList(listApiErrorResult.getData());
                         if(listApiErrorResult.getData().isEmpty()) {
-                            showEmptyView("No results");
+                            showEmptyView(false, "No results");
                             hideResultsList();
                         } else {
                             showResultsList();
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     if(listApiErrorResult.getError() != null) {
                         String message = listApiErrorResult.getError().getMessage();
-                        showEmptyView(message);
+                        showEmptyView(true, message);
                         hideResultsList();
                     }
                 });
@@ -89,9 +89,14 @@ public class MainActivity extends AppCompatActivity {
         binding.recyclerViewResults.setVisibility(View.GONE);
     }
 
-    private void showEmptyView(String message) {
+    private void showEmptyView(boolean error, String message) {
         binding.emptyViewLayout.setVisibility(View.VISIBLE);
         binding.emptyViewLayout.setMessage(message);
+        if(error) {
+            binding.emptyViewLayout.setIcon(R.drawable.ic_error);
+        } else {
+            binding.emptyViewLayout.setIcon(R.drawable.ic_search);
+        }
     }
 
     private void hideEmptyView() {

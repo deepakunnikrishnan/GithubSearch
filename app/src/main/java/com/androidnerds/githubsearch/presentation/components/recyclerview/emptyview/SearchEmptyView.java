@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -36,5 +37,9 @@ public class SearchEmptyView extends ConstraintLayout {
 
     public void setMessage(String message) {
         binding.textViewLabel.setText(message);
+    }
+
+    public void setIcon(@DrawableRes int resId){
+        binding.imageView.setImageResource(resId);
     }
 }
